@@ -1,0 +1,25 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Employee Information</h1>
+
+@using(Html.BeginForm("Edit","EmployeeHome",FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>@Html.LabelFor(x => x.name)</td>
+            <td>@Html.TextBoxFor(x => x.name)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.Salary)</td>
+            <td>@Html.TextBoxFor(x => x.Salary)</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit"value="Submit" /></td>
+        </tr>
+       
+    </table>
+}
+
