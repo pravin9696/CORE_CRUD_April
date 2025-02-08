@@ -1,0 +1,26 @@
+﻿@model CORE_CRUD_April.Models.Student
+@{
+    ViewData["Title"] = "AddStudent";
+}
+
+<h1>AddStudent</h1>
+<form asp-action="AddStudent" asp-controller="Student" method="post">
+    <div asp-validation-summary="All">
+
+    </div>
+    <label asp-for="Name"></label>
+    <span asp-validation-for="Name"></span>
+    <br />
+    <input type="text" asp-for="Name"/>
+    <br />
+    <label asp-for="DeptID">Select Department</label>
+    <span asp-validation-for="DeptID"></span>
+    <br />
+    <select asp-for="DeptID" asp-items=@ViewBag.depts>
+        <option>select Department</option>
+    </select><br />
+
+    <input type="submit" value="submit" />
+
+</form>
+

@@ -3,6 +3,7 @@ using CORE_CRUD_April.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CORE_CRUD_April.Migrations
 {
     [DbContext(typeof(MyEmpDBcontext))]
-    partial class MyEmpDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20250208110029_studClassAddedNew")]
+    partial class studClassAddedNew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,40 +68,7 @@ namespace CORE_CRUD_April.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("CORE_CRUD_April.Models.Student", b =>
-                {
-                    b.Property<int>("Roll")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Roll"));
-
-                    b.Property<int>("DeptID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Roll");
-
-                    b.HasIndex("DeptID");
-
-                    b.ToTable("Studenttbl");
-                });
-
             modelBuilder.Entity("CORE_CRUD_April.Models.Employee", b =>
-                {
-                    b.HasOne("CORE_CRUD_April.Models.Department", "Department")
-                        .WithMany()
-                        .HasForeignKey("DeptID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Department");
-                });
-
-            modelBuilder.Entity("CORE_CRUD_April.Models.Student", b =>
                 {
                     b.HasOne("CORE_CRUD_April.Models.Department", "Department")
                         .WithMany()

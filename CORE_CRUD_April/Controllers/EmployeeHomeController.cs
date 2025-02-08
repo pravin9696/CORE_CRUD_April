@@ -1,5 +1,6 @@
 ﻿using CORE_CRUD_April.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CORE_CRUD_April.Controllers
 {
@@ -36,6 +37,20 @@ namespace CORE_CRUD_April.Controllers
                 }
                
             }
+            return View();
+        }
+        public IActionResult SelectEmpDemo()
+        {
+            List<Employee> emps=dbo.Employees.ToList();
+
+            SelectList SelectEmps = new SelectList(emps, "Id", "name");
+            ViewBag.emps = SelectEmps;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SelectEmpDemo(Employee emp)
+        {
+         
             return View();
         }
     }

@@ -1,0 +1,27 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "AddEmp";
+}
+
+<h1>Add Employee</h1>
+<form asp-action="AddEmp" asp-controller="NewEmployee" method="post">
+    <input type="hidden" asp-for=Department/>
+    <label asp-for="name">Employee Name</label>
+    <span asp-validation-for="name" class="text-danger"></span>
+    <br />
+    <input type="text" asp-for=name /><br />
+    <label asp-for="Salary">Salary</label>
+    <span asp-validation-for="Salary" class="text-danger"></span>
+    <br />
+    <input type="number" asp-for=Salary /><br />
+    <label asp-for="DeptID">Department</label>
+    <span asp-validation-for="DeptID" class="text-danger"></span>
+    <br />
+    <select asp-for="DeptID" asp-items=@ViewBag.Depts>
+        <option>Select Department</option>
+    </select>
+    
+    <br />
+    <input type="submit" value="Submit" />
+</form>
+
